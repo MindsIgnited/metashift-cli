@@ -6,12 +6,12 @@ package com.metashift.context
 class MetaUtil {
 
     /**
-     * Puts the given value into the map at the key. But stores the value in a list.
+     * Puts the given value into the map at the key. But stores the value instream a list.
      * So if the value already exists it is added to the list. If it does not exist at the key it is added to a LinkedList and then to the map.
      * @param target
      * @param key
      * @param value
-     * @return the map passed in as the target
+     * @return the map passed instream as the target
      */
     public static Map putAsList(Map target, String key, Object value){
         assert target != null, 'Target must not be null'

@@ -16,32 +16,34 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.metashift.crash.ssh.term;
 
-import com.metashift.context.FileableContext;
-import org.apache.sshd.common.Factory;
-import org.apache.sshd.server.Command;
-import org.crsh.shell.ShellFactory;
+package com.metashift.crash.spring;
 
-import java.nio.charset.Charset;
+import org.crsh.util.SimpleMap;
+import org.springframework.beans.factory.ListableBeanFactory;
 
-public class CRaSHCommandFactory implements Factory<Command> {
+import java.util.Arrays;
+import java.util.Iterator;
 
-    /** . */
-    final ShellFactory shellFactory;
+class SpringMap extends SimpleMap<String, Object> {
 
-    /** . */
-    final Charset encoding;
+  /** . */
+  private final ListableBeanFactory factory;
 
-    final FileableContext fileableContext;
+  SpringMap(ListableBeanFactory factory) {
+    this.factory = factory;
+  }
 
-    public CRaSHCommandFactory(ShellFactory shellFactory, Charset encoding,FileableContext fileableContext) {
-        this.shellFactory = shellFactory;
-        this.encoding = encoding;
-        this.fileableContext = fileableContext;
+  @Override
+  protected Iterator<String> keys() {
+    return Arrays.asList(factory.getBeanDefinitionNames()).iterator();
+  }
+
+  @Override
+  public Object get(Object key) {
+    if (key instanceof String) {
+      return factory.getBean(((String)key));
     }
-
-    public Command create() {
-        return new CRaSHCommand(this);
-    }
+    return null;
+  }
 }

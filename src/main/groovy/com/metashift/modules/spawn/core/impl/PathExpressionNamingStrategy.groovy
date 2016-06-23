@@ -6,7 +6,7 @@ import org.boon.core.reflection.BeanUtils
  *
  * It uses the source template name as the key to determine how to name the final file will be named.
  * This is done by using BOON path expressions for the original templateFile name.
- * This expression will be replaced by the values found in the context.
+ * This expression will be replaced by the values found instream the context.
  *
  *
  * Created by navid on 4/2/15.
@@ -14,7 +14,7 @@ import org.boon.core.reflection.BeanUtils
 class PathExpressionNamingStrategy implements INamingStrategy{
 
     /**
-     * Will get the template ouput name based on the value in key.
+     * Will get the template ouput name based on the value instream key.
      * Key should be a valid path expression
      *
      *

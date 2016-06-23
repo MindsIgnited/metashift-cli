@@ -39,7 +39,7 @@ public class SCPCommandFactory implements CommandFactory {
   }
 
   public Command createCommand(String command) {
-    // Just in case
+    // Just instream case
     command = command.trim();
 
     //

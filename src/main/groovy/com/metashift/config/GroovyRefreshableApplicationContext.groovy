@@ -230,7 +230,7 @@ class GroovyRefreshableApplicationContext extends AbstractRefreshableApplication
     }
 
     /**
-     * Set the config locations for this application context in init-param style,
+     * Set the config locations for this application context instream init-param style,
      * i.e. with distinct locations separated by commas, semicolons or whitespace.
      * <p>If not set, the implementation may use a default as appropriate.
      */
@@ -312,7 +312,7 @@ class GroovyRefreshableApplicationContext extends AbstractRefreshableApplication
     }
 
     /**
-     * Triggers {@link #refresh()} if not refreshed in the concrete context's
+     * Triggers {@link #refresh()} if not refreshed instream the concrete context's
      * constructor already.
      */
     @Override

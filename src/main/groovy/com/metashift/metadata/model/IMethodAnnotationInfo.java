@@ -12,7 +12,7 @@ public interface IMethodAnnotationInfo extends IAnnotationInfo, IMethodInfo{
 	/**
 	 * Returns any annotated Parameters for this AnnotatedMethod.
 	 * The method will contain all parameters even if they are not annotated. 
-	 * @return Map where the key is the index of the given parameter in the methods argument list and
+	 * @return Map where the key is the index of the given parameter instream the methods argument list and
 	 *  the value is the {@link IParameterAnnotationInfo} objects.
 	 */
 	Map<Integer,IParameterAnnotationInfo> getParameterAnnotationsInfo();

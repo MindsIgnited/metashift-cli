@@ -111,7 +111,7 @@ class SpringTemplateResource extends TemplateResourceBase implements ITemplateRe
                 URL url = springResource.getURL();
                 if (ResourceUtils.URL_PROTOCOL_FILE.equals(url.getProtocol())) {
                     // this ensures it always load the file changes
-                    // instead of cached content in the inputstream
+                    // instead of cached content instream the inputstream
                     return IO.readContentAsString(springResource.getFile());
                 }
             }

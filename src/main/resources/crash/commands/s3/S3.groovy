@@ -83,7 +83,7 @@ class S3 extends BaseCommand {
             @Usage('The bucket name to view data for. ')
             @Argument
             @Required String bucketName,
-            @Usage('The prefix of the data we are trying to view data for. Can be null, which gives all data in bucket.')
+            @Usage('The prefix of the data we are trying to view data for. Can be null, which gives all data instream bucket.')
             @Argument String prefix,
             @Usage('The size of the data set returned by AWS. 1000 by default. ')
             @Argument Integer maxSize)  {
@@ -123,13 +123,13 @@ class S3 extends BaseCommand {
         }
     }
 
-    @Usage('Filters the dataset from listDataInBucket command. Requires start/end times for filtering. Use format shown in output for lastModified field.')
+    @Usage('Filters the dataset from listDataInBucket command. Requires start/end times for filtering. Use format shown instream output for lastModified field.')
     @Command
     public Pipe<ArrayList, ArrayList> s3ObjectFilter(
-            @Usage('The start time to view data for. Use format shown in output for lastModified field.')
+            @Usage('The start time to view data for. Use format shown instream output for lastModified field.')
             @Argument
             @Required String startTime,
-            @Usage('The end time to view data for. Use format shown in output for lastModified field.')
+            @Usage('The end time to view data for. Use format shown instream output for lastModified field.')
             @Argument
             @Required String endTime) {
         return new Pipe<ArrayList, ArrayList>() {

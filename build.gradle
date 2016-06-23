@@ -103,9 +103,6 @@ dependencies {
 
     compile "org.crashub:crash.shell:1.3.1-SNAPSHOT"
     compile "org.crashub:crash.cli:1.3.1-SNAPSHOT"
-    compile("org.crashub:crash.embed.spring:1.3.1-SNAPSHOT") {
-        exclude module: "org.springframework"
-    }
 
     /** SSH Deps **/
 

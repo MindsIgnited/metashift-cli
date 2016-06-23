@@ -29,7 +29,7 @@ import java.io.OutputStream;
 public abstract class AbstractCommand implements Command, SessionAware {
 
   /** . */
-  protected InputStream in;
+  protected InputStream instream;
 
   /** . */
   protected OutputStream out;
@@ -44,7 +44,7 @@ public abstract class AbstractCommand implements Command, SessionAware {
   protected ServerSession session;
 
   public final void setInputStream(InputStream in) {
-    this.in = in;
+    this.instream = in;
   }
 
   public final void setOutputStream(OutputStream out) {

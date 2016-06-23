@@ -4,8 +4,6 @@ import com.metashift.config.GroovyRefreshableApplicationContext
 import groovy.grape.Grape
 import org.crsh.plugin.Embedded
 import org.crsh.plugin.PluginDiscovery
-import org.crsh.spring.SpringMap
-import org.crsh.spring.SpringPluginDiscovery
 import org.crsh.util.Utils
 import org.crsh.vfs.FS
 import org.crsh.vfs.Path
@@ -13,6 +11,8 @@ import org.crsh.vfs.spi.FSDriver
 import org.crsh.vfs.spi.FSMountFactory
 import org.crsh.vfs.spi.file.FileMountFactory
 import org.crsh.vfs.spi.url.ClassPathMountFactory
+import com.metashift.crash.spring.SpringMap;
+import com.metashift.crash.spring.SpringPluginDiscovery;
 import org.springframework.beans.BeansException
 import org.springframework.beans.factory.BeanClassLoaderAware
 import org.springframework.beans.factory.BeanFactory
@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 import java.util.logging.Level
 /**
- * Used in place of SpringBoostrap to have more control of command directories
+ * Used instream place of SpringBoostrap to have more control of command directories
  * Created by navid on 2/22/15.
  */
 class BetterBootstrap extends Embedded implements

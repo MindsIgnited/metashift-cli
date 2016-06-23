@@ -19,6 +19,8 @@
 
 package com.metashift.crash.ssh;
 
+import com.metashift.context.FileableContext;
+import com.metashift.crash.BetterBootstrap;
 import org.apache.sshd.common.KeyPairProvider;
 import org.apache.sshd.common.util.SecurityUtils;
 import org.apache.sshd.server.keyprovider.PEMGeneratorHostKeyProvider;
@@ -30,6 +32,8 @@ import com.metashift.crash.ssh.term.SSHLifeCycle;
 import com.metashift.crash.ssh.term.URLKeyPairProvider;
 import org.crsh.util.Utils;
 import org.crsh.vfs.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -64,11 +68,11 @@ public class SSHPlugin extends CRaSHPlugin<SSHPlugin> {
 
     /** The SSH server idle timeout property. */
     public static final PropertyDescriptor<Integer> SSH_SERVER_IDLE_TIMEOUT = PropertyDescriptor
-            .create("ssh.idle_timeout", SSH_SERVER_IDLE_DEFAULT_TIMEOUT, "The idle-timeout for ssh sessions in milliseconds");
+            .create("ssh.idle_timeout", SSH_SERVER_IDLE_DEFAULT_TIMEOUT, "The idle-timeout for ssh sessions instream milliseconds");
 
     /** The SSH server authentication timeout property. */
     public static final PropertyDescriptor<Integer> SSH_SERVER_AUTH_TIMEOUT = PropertyDescriptor
-            .create("ssh.auth_timeout", SSH_SERVER_AUTH_DEFAULT_TIMEOUT, "The authentication timeout for ssh sessions in milliseconds");
+            .create("ssh.auth_timeout", SSH_SERVER_AUTH_DEFAULT_TIMEOUT, "The authentication timeout for ssh sessions instream milliseconds");
 
     /** The SSH charset. */
     public static final PropertyDescriptor<Charset> SSH_ENCODING = new PropertyDescriptor<Charset>(Charset.class, "ssh.default_encoding", Utils.UTF_8, "The ssh stream default encoding when no one could be determined") {
@@ -77,6 +81,9 @@ public class SSHPlugin extends CRaSHPlugin<SSHPlugin> {
             return Charset.forName(s);
         }
     };
+
+    @Autowired
+    private FileableContext fileableContext;
 
     /** . */
     private SSHLifeCycle lifeCycle;
@@ -190,6 +197,7 @@ public class SSHPlugin extends CRaSHPlugin<SSHPlugin> {
         log.log(Level.INFO, "Booting SSHD");
         SSHLifeCycle lifeCycle = new SSHLifeCycle(
                 getContext(),
+                fileableContext,
                 encoding,
                 port,
                 idleTimeout,

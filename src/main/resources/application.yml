@@ -13,7 +13,7 @@
       engine.file_write:            true
       engine.mode:                  dev
       feature.natural_template:     true    # Allow directives into comments of the context code type
-      feature.smart_escape:         true    # Auto escape the expression output in a way that corresponds the the code type context
+      feature.smart_escape:         true    # Auto escape the expression output instream a way that corresponds the the code type context
       feature.dynamic_exp.enabled:  true    # allow groovy beans type syntax when accessing object properties
       codegen.compact.enabled:      false   # will compact template output by removing extra white space and line breaks
 

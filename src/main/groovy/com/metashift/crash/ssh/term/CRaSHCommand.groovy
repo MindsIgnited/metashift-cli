@@ -16,8 +16,9 @@
  * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
  * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
  */
-package com.metashift.crash.ssh.term;
+package com.metashift.crash.ssh.term
 
+import com.metashift.crash.ShellWithNoise;
 import org.apache.sshd.server.Environment;
 import org.crsh.console.jline.JLineProcessor;
 import org.crsh.console.jline.Terminal;
@@ -86,7 +87,10 @@ public class CRaSHCommand extends AbstractCommand implements Runnable, Terminal 
         }
       };
       Shell shell = factory.shellFactory.create(user);
-      ConsoleReader reader = new ConsoleReader(in, out, this) {
+      /* Proxy this sucker so we can have an easier way to inject noise */
+      shell = new ShellWithNoise(shell,factory.fileableContext);
+
+      ConsoleReader reader = new ConsoleReader(instream, out, this) {
         @Override
         public void shutdown() {
           exited.set(true);
@@ -97,7 +101,7 @@ public class CRaSHCommand extends AbstractCommand implements Runnable, Terminal 
       JLineProcessor processor = new JLineProcessor(true, shell, reader, new PrintStream(out, false, encoding), "\r\n");
       processor.run();
     } catch (java.io.InterruptedIOException e) {
-      // Expected behavior because of the onExit callback in the shutdown above
+      // Expected behavior because of the onExit callback instream the shutdown above
       // clear interrupted status on purpose
       Thread.interrupted();
     } catch (Exception e) {
@@ -155,8 +159,8 @@ public class CRaSHCommand extends AbstractCommand implements Runnable, Terminal 
   }
 
   @Override
-  public InputStream wrapInIfNeeded(InputStream in) throws IOException {
-    return in;
+  public InputStream wrapInIfNeeded(InputStream instream) throws IOException {
+    return instream;
   }
 
   @Override

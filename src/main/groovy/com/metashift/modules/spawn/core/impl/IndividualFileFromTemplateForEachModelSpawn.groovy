@@ -41,7 +41,7 @@ class IndividualFileFromTemplateForEachModelSpawn extends AbstractSpawn implemen
      *
      * It uses the source template name as the key to determine how to name the final file will be named.
      * This is done by using a modified form of BOON path expressions for the original templateFile name.
-     * This expression will be replaced by the values found in the context.
+     * This expression will be replaced by the values found instream the context.
      *
      * The File name will have the following replacements done
      *

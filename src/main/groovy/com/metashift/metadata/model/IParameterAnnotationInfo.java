@@ -16,7 +16,7 @@ public interface IParameterAnnotationInfo extends IAnnotationInfo {
 	IMethodInfo getParentMethodInfo();
 	
 	/**
-	 * The index for the given parameter. This would be the order the annotated parameter appears in the method argument list.
+	 * The index for the given parameter. This would be the order the annotated parameter appears instream the method argument list.
 	 * @return
 	 */
 	Integer getParameterIndex();

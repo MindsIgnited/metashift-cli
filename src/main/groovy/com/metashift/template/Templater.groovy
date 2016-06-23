@@ -50,7 +50,7 @@ class Templater {
 
     /**
      * Sets the template file to use.
-     * This will automatically set the template engine if the template file ends in one of the following extensions
+     * This will automatically set the template engine if the template file ends instream one of the following extensions
      * .ftl = freemarker
      * .gtl = GroovyStreamingTemplateEngine
      * .rythm = Rythm

@@ -24,7 +24,7 @@ import org.objectweb.asm.ClassReader;
  * {@link org.springframework.core.type.classreading.MetadataReader} implementation based on an ASM
  * {@link org.objectweb.asm.ClassReader}.
  *
- * <p>Package-visible in order to allow for repackaging the ASM library
+ * <p>Package-visible instream order to allow for repackaging the ASM library
  * without effect on users of the <code>core.type</code> package.
  *
  * @author Juergen Hoeller
