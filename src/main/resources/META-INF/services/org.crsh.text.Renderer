@@ -10,4 +10,3 @@ org.crsh.text.renderers.ObjectNameRenderer
 org.crsh.text.renderers.MBeanInfoRenderer
 org.crsh.text.ui.ElementRenderer
 org.crsh.text.ui.UIBuilderRenderer
-com.metashift.crash.renderer.ObjectRenderer

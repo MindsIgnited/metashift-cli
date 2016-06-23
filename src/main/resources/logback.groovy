@@ -6,12 +6,12 @@ import ch.qos.logback.core.status.OnConsoleStatusListener
 statusListener(OnConsoleStatusListener)
 
 def appenderList = ["ROLLING"]
-def WEBAPP_DIR = "."
+def LOG_DIR = "."
 def consoleAppender = true;
 
 def PROFILE = System.getProperty("spring.profiles.active");
 if (PROFILE == "production") {
-    WEBAPP_DIR = "~/metashift"
+    LOG_DIR = "~/metashift"
     consoleAppender = false
 } else {
     appenderList.add("CONSOLE")
@@ -30,7 +30,7 @@ appender("ROLLING", RollingFileAppender) {
         Pattern = "%d %level %thread %mdc %logger - %m%n"
     }
     rollingPolicy(TimeBasedRollingPolicy) {
-        FileNamePattern = "${WEBAPP_DIR}/log/metashift-%d{yyyy-MM}.zip"
+        FileNamePattern = "${LOG_DIR}/log/metashift-%d{yyyy-MM}.zip"
     }
 }
 

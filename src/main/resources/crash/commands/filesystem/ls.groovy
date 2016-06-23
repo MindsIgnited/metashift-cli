@@ -16,7 +16,7 @@ class ls extends BaseCommand {
 
     @Usage("Lists the contents of the current directory or the directory provided")
     @Command
-    List<File> main(@Usage("the directory to make current")
+    void main(@Usage("the directory to make current")
                 @Argument Fileable path) {
         File dir = path?.f
         if(!(path?.path?.startsWith(File.separator))){
@@ -30,7 +30,9 @@ class ls extends BaseCommand {
         if(!dir.isDirectory()){
             throw new ScriptException("The path provided must be a directory")
         }
-        dir.listFiles()
+        dir.listFiles().each {f ->
+            context.provide(f)
+        }
     }
 
 
