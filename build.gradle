@@ -58,11 +58,15 @@ dependencies {
         freeMarkerVersion = '2.3.22'
         grgitVersion = '1.4.1'
         logbackVersion = '1.1.3'
+        chronicleVersion='4.5.18'
+        chronicleWireVersion='1.7.14'
     }
 
     compile "org.codehaus.groovy:groovy-all:2.4.4"
     compile "org.apache.ivy:ivy:2.4.0"
 
+// Genesys DSL
+    compile 'com.mindsignited:genesys-dsl:1.0-SNAPSHOT'
 
     compile "commons-logging:commons-logging:1.2"
 
@@ -156,6 +160,10 @@ dependencies {
 
 
     /** Misc Deps **/
+
+    //Chronicle Queue
+    compile "net.openhft:chronicle-queue:${chronicleVersion}"
+    compile "net.openhft:chronicle-wire:${chronicleWireVersion}"
 
     compile "ch.qos.logback:logback-core:${logbackVersion}"
     compile "ch.qos.logback:logback-classic:${logbackVersion}"
