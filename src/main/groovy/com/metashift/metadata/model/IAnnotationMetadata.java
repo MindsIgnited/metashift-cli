@@ -24,7 +24,7 @@ public interface IAnnotationMetadata extends IClassMetadata {
 	 * if any (i.e. if defined on the underlying class).
 	 * @param annotationType the annotation type to look for
 	 * @return a List of {@link AnnotationInfo} objects one for each occurrence of a given annotation type. 
-	 * 	If this is a class level annotation type there should only be one object in the list.
+	 * 	If this is a class level annotation type there should only be one object instream the list.
 	 *  The {@link AnnotationInfo} may be of a specialized type depending on the Annotations Target. 
 	 * This return value will be <code>null</code> if no matching
 	 * annotation is defined.

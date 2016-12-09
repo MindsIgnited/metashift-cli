@@ -16,7 +16,7 @@ import org.springframework.util.Assert;
  * resources.
  * <p/>
  * <p>Expects "spring.resources.loader" and "spring.resources.loader.path"
- * application attributes in the Rythm runtime: the former of type
+ * application attributes instream the Rythm runtime: the former of type
  * {@code org.springframework.core.io.ResourceLoader}, the latter a String.
  *
  * @author Gelin Luo

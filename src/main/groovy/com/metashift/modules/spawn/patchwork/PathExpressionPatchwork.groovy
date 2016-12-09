@@ -3,10 +3,10 @@ package com.metashift.modules.spawn.patchwork
 import org.boon.Boon
 
 /**
- * Uses a "Path Expression" Map Where the keys in the map will be the new property or key
+ * Uses a "Path Expression" Map Where the keys instream the map will be the new property or key
  * and the value is the path expression to use to extract the value from the orginal object
  *
- * Boon has powerful path expressions that work with objects, lists and maps. It also works with JSON. Full examples of Java, Maps/Lists and JSON are included in this tutorial.
+ * Boon has powerful path expressions that work with objects, lists and maps. It also works with JSON. Full examples of Java, Maps/Lists and JSON are included instream this tutorial.
  *
  * Supports expressions like:
  *

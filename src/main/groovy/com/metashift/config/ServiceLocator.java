@@ -39,7 +39,7 @@ public class ServiceLocator implements ApplicationContextAware{
 			T object = applicationContext.getBean(clazz);
 			
 			if(object == null){
-				throw new IllegalStateException("No Class Found For Name " + clazz.getName() + " in Spring Context");
+				throw new IllegalStateException("No Class Found For Name " + clazz.getName() + " instream Spring Context");
 			}
 			
 			return (T)object;
@@ -59,7 +59,7 @@ public class ServiceLocator implements ApplicationContextAware{
 			service = applicationContext.getBean(beanName);
 			
 			if(service == null){
-				throw new IllegalStateException("No bean for name " + beanName + " found in Spring Context");
+				throw new IllegalStateException("No bean for name " + beanName + " found instream Spring Context");
 			}
 			
 			return service;

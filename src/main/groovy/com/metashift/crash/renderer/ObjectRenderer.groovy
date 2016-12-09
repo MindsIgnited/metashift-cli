@@ -21,9 +21,10 @@ public class ObjectRenderer extends Renderer<List<?>> {
         return (Class)mapClass;
     }
 
-    def Map<String, Object> toMap(object) { return object?.properties.findAll{ (it.key != 'class') }.collectEntries {
-        it.value == null || it.value instanceof Serializable ? [it.key, it.value] : [it.key, toMap(it.value)]
-    }
+    def Map<String, Object> toMap(object) {
+        return object?.properties.findAll{ (it.key != 'class') }.collectEntries {
+            it.value == null || it.value instanceof Serializable ? [it.key, it.value] : [it.key, toMap(it.value)]
+        }
     }
 
     public LineRenderer renderer(Iterator<List<?>> stream) {

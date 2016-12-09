@@ -43,7 +43,7 @@ public class AnnotationAttributeVistor extends EmptyVisitor {
 	public void visitEnd() {
 		try {
 			Class annotationClass = classLoader.loadClass(annotationClassName);
-			// Check declared default values of attributes in the annotation type.
+			// Check declared default values of attributes instream the annotation type.
 			Method[] annotationAttributes = annotationClass.getMethods();
 			for (int i = 0; i < annotationAttributes.length; i++) {
 				Method annotationAttribute = annotationAttributes[i];

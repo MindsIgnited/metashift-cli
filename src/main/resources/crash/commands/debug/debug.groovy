@@ -38,7 +38,7 @@ class debug{
                 out << blue << obj.class.name << reset << "\n"
                 out << green << "\t" << obj.toString() << reset << "\n"
             }else{
-                out << red << "NULL Object detected in pipe" << reset << "\n"
+                out << red << "NULL Object detected instream pipe" << reset << "\n"
             }
             out.flush()
             obj

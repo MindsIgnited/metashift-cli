@@ -24,15 +24,15 @@ class WritableUtil {
 
 
     /**
-     * Renders the file as a temp file created in the temp directory provided.
-     * @param  prefix     The prefix string to be used in generating the file's
+     * Renders the file as a temp file created instream the temp directory provided.
+     * @param  prefix     The prefix string to be used instream generating the file's
      *                    name; must be at least three characters long
      *
-     * @param  suffix     The suffix string to be used in generating the file's
-     *                    name; may be <code>null</code>, in which case the
+     * @param  suffix     The suffix string to be used instream generating the file's
+     *                    name; may be <code>null</code>, instream which case the
      *                    suffix <code>".tmp"</code> will be used
      *
-     * @param  directory  The directory in which the file is to be created, or
+     * @param  directory  The directory instream which the file is to be created, or
      *                    <code>null</code> if the default temporary-file
      *                    directory is to be used
      * @return
@@ -55,15 +55,15 @@ class WritableUtil {
     }
 
     /**
-     * Renders the file as a temp file created in the default temp directory.
-     * @param  prefix     The prefix string to be used in generating the file's
+     * Renders the file as a temp file created instream the default temp directory.
+     * @param  prefix     The prefix string to be used instream generating the file's
      *                    name; must be at least three characters long
      *
-     * @param  suffix     The suffix string to be used in generating the file's
-     *                    name; may be <code>null</code>, in which case the
+     * @param  suffix     The suffix string to be used instream generating the file's
+     *                    name; may be <code>null</code>, instream which case the
      *                    suffix <code>".tmp"</code> will be used
      *
-     * @param  directory  The directory in which the file is to be created, or
+     * @param  directory  The directory instream which the file is to be created, or
      *                    <code>null</code> if the default temporary-file
      *                    directory is to be used
      * @return

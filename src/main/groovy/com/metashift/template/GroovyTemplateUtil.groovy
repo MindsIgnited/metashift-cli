@@ -57,7 +57,7 @@ class GroovyTemplateUtil {
 
     /**
      * Will load the default template parameters if there are any provided
-     * The template defaults are expected to be in a file in the same directory with the name templateFile_defaults.groovy
+     * The template defaults are expected to be instream a file instream the same directory with the name templateFile_defaults.groovy
      *
      * example:
      * templateFile = myTemplate.groovy.tpl
