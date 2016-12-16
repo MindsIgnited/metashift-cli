@@ -48,7 +48,8 @@ class S3 extends BaseCommand {
             @Argument
             @Required String bucketName,
             @Usage('The prefix of the data we are trying to view data for. ')
-            @Argument String prefix,
+            @Argument
+            @Required String prefix,
             @Usage('The size of the data set returned by AWS. 1000 by default. ')
             @Argument Integer maxSize) {
 
