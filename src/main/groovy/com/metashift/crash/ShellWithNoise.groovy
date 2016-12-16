@@ -49,7 +49,7 @@ It is ${new Date()} now
         if(idx > 3){
             idx = 0
         }
-        def ret = "wat:${fileableContext.currentDirectory().name} ${metaDude[idx]}->"
+        def ret = "wat:${fileableContext.currentDirectory().name} ${metaDude[idx]}-> "
         idx++
         ret
     }
