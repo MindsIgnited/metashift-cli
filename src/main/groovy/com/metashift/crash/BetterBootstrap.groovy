@@ -132,7 +132,7 @@ class BetterBootstrap extends Embedded implements
         if (driver == null) {
             throw new NullPointerException("No null conf driver");
         }
-        log.info("Added " + driver + " driver to command path");
+        log.config("Added " + driver + " driver to command path");
         cmdFS.mount(driver);
         commandMounts.add(driver.toString())
         return this;
@@ -150,7 +150,7 @@ class BetterBootstrap extends Embedded implements
         if (path == null) {
             throw new NullPointerException("No null command path");
         }
-        log.info("Added " + path.getAbsolutePath() + " file to command path");
+        log.config("Added " + path.getAbsolutePath() + " file to command path");
         cmdFS.mount(path);
         commandMounts.add(path.getAbsolutePath())
         return this;
@@ -169,7 +169,8 @@ class BetterBootstrap extends Embedded implements
         if (path == null) {
             throw new NullPointerException("No null command path");
         }
-        log.info("Added " + path.getValue() + " path to command path");
+
+        log.config("Added " + path.getValue() + " path to command path");
         cmdFS.mount(loader, path);
         commandMounts.add(path.getValue())
         return this;
