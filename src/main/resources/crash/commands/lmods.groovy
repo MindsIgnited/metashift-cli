@@ -11,6 +11,8 @@ class NotHiddenFileFilter implements FileFilter{
 
 (scan.resources { "file:${System.getProperty("user.home")}/metashift/**-metamods/resources/**" } | { Resource r ->
 
+
+
     if(r.file.isDirectory()
         && !r.file.isHidden()
         && r.file.listFiles(new NotHiddenFileFilter()).length > 0) {

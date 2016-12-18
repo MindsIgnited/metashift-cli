@@ -26,6 +26,7 @@ targetCompatibility = 1.8
 
 repositories {
     jcenter()
+    mavenLocal()
     maven { url "https://repo.spring.io/milestone" }
     maven { url "https://repo.spring.io/snapshot" }
     flatDir {
@@ -168,6 +169,24 @@ dependencies {
     compile "ch.qos.logback:logback-core:${logbackVersion}"
     compile "ch.qos.logback:logback-classic:${logbackVersion}"
 
+    // Flint migration dependencies
+   // compile group: 'com-mthinx', name: 'FlintDomainServer', version:'1.0.17-SNAPSHOT'
+   // compile group: 'com-mthinx', name: 'FlintRepository', version:'1.0.17-SNAPSHOT'
+
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version:'1.6.4.RELEASE'
+    compile group: 'c3p0', name: 'c3p0', version:'0.9.1.2'
+    compile group: 'mysql', name: 'mysql-connector-java', version:'5.1.23'
+    compile group: 'org.hibernate', name: 'hibernate-core', version:'3.6.10.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version:'3.6.10.Final'
+    compile group: 'org.hibernate', name: 'hibernate-ehcache', version:'3.6.10.Final'
+    compile group: 'org.hibernate.javax.persistence', name: 'hibernate-jpa-2.0-api', version:'1.0.1.Final'
+    compile group: 'javax.validation', name: 'validation-api', version:'1.0.0.GA'
+    compile group: 'org.hibernate', name: 'hibernate-validator', version:'4.3.1.Final'
+    compile group: 'org.springframework', name: 'spring-context', version:"${springVersion}"
+    compile group: 'org.springframework', name: 'spring-orm', version:"${springVersion}"
+    compile group: 'org.springframework', name: 'spring-jdbc', version:"${springVersion}"
+    
+
     testCompile "org.springframework.boot:spring-boot-starter-test"
 }
 
@@ -180,5 +199,6 @@ task wrapper(type: Wrapper) {
 applicationDefaultJvmArgs = [
         "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5015",
         "-Dspring.profiles.active=development,crash",
+        "-Dgroovy.grape.report.downloads=true",
         "-noverify"
 ]
