@@ -3,6 +3,33 @@ apply plugin: "idea"
 apply plugin: "metashift" //note: includes spring-boot plugin
 
 
+version = "0.0.2-SNAPSHOT"
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+def getMavenSettingsCredentials = {
+    String userHome = System.getProperty( "user.home" );
+    File mavenSettings = new File(userHome, ".m2/settings.xml")
+    def xmlSlurper = new XmlSlurper()
+    def output = xmlSlurper.parse(mavenSettings)
+    return output."servers"."server"
+}
+
+def getCredentials = {
+    def entries = getMavenSettingsCredentials()
+    def miCloudRepoTag = "mindsignited-repo"
+    if (version.contains("SNAPSHOT")){
+        miCloudRepoTag = "mindsignited-repo-snapshot"
+    }
+    for (entry in entries) {
+        if ( entry."id".text() == miCloudRepoTag ) {
+            return [username: entry.username.text(), password: entry.password.text()]
+        }
+    }
+
+}
+
 buildscript {
     repositories {
         jcenter()
@@ -18,11 +45,10 @@ idea {
 
 jar {
     baseName = "metashift-cli"
-    version = "0.0.2-SNAPSHOT"
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+def creds = getCredentials()
+def isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 repositories {
     jcenter()
@@ -32,6 +58,26 @@ repositories {
     flatDir {
         dirs "lib" // Here for crash deps temporarily
     }
+    if (isReleaseVersion) {
+        maven {
+            authentication { basic(BasicAuthentication) }
+            credentials {
+                username creds["username"]
+                password creds["password"]
+            }
+            url "https://deployer.mthinxiot.com/mindsignited/maven-repo/raw/releases"
+        }
+    }else{
+        maven {
+            authentication { basic(BasicAuthentication) }
+            credentials {
+                username creds["username"]
+                password creds["password"]
+            }
+            url "https://deployer.mthinxiot.com/mindsignited/maven-repo/raw/snapshots"
+        }
+    }
+    maven { url "https://raw.github.com/synergian/wagon-git/releases"}
 }
 
 
@@ -170,8 +216,8 @@ dependencies {
     compile "ch.qos.logback:logback-classic:${logbackVersion}"
 
     // Flint migration dependencies
-   // compile group: 'com-mthinx', name: 'FlintDomainServer', version:'1.0.17-SNAPSHOT'
-   // compile group: 'com-mthinx', name: 'FlintRepository', version:'1.0.17-SNAPSHOT'
+    compile group: 'mthinxiot', name: 'FlintDomainServer', version:'1.0.18-SNAPSHOT'
+    compile group: 'mthinxiot', name: 'FlintRepository', version:'1.0.18-SNAPSHOT'
 
     compile group: 'org.springframework.data', name: 'spring-data-jpa', version:'1.6.4.RELEASE'
     compile group: 'c3p0', name: 'c3p0', version:'0.9.1.2'
