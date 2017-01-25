@@ -1,6 +1,7 @@
 package com.metashift.aws
 
 import com.amazonaws.resources.ec2.*
+import com.amazonaws.resources.ec2.internal.*
 
 /**
  * Created by mindonfire on 1/20/17.
@@ -20,22 +21,21 @@ class AwsSession {
         HashMap<String,Object> map = new HashMap<>()
         cacheFileData.each { it ->
             if(it.getValue() instanceof Map){
-                if(Vpc.getClass().getName().equalsIgnoreCase(it.getValue().clazz)){
-                    map.put(it.getKey(), ec2.getVpc(it.getValue().id))
-                }else if(SecurityGroup.getClass().getName().equalsIgnoreCase(it.getValue().clazz)){
-                    map.put(it.getKey(), ec2.getSecurityGroup(it.getValue().id))
-                }else if(Subnet.getClass().getName().equalsIgnoreCase(it.getValue().clazz)){
-                    map.put(it.getKey(), ec2.getSubnet(it.getValue().id))
-                }else if(Instance.getClass().getName().equalsIgnoreCase(it.getValue().clazz)){
-                    map.put(it.getKey(), ec2.getInstance(it.getValue().id))
-                }else{
-                    out << "AWS Object cannot be created and AwsSession must be updated to support it -> ${it.getValue().clazz}"
-                    out.flush()
+                Map ecObj = (Map)it.getValue()
+                if(ecObj.clazz.equalsIgnoreCase(VpcImpl.class.getName())){
+                    map.put(it.getKey(), ec2.getVpc((String)ecObj.id))
+                }else if(ecObj.clazz.equalsIgnoreCase(SecurityGroupImpl.class.getName())){
+                    map.put(it.getKey(), ec2.getSecurityGroup((String)ecObj.id))
+                }else if(ecObj.clazz.equalsIgnoreCase(SubnetImpl.class.getName())){
+                    map.put(it.getKey(), ec2.getSubnet((String)ecObj.id))
+                }else if(ecObj.clazz.equalsIgnoreCase(InstanceImpl.class.getName())){
+                    map.put(it.getKey(), ec2.getInstance((String)ecObj.id))
                 }
             }else{
                 map.put(it.getKey(), it.getValue())
             }
         }
+        map
     }
 
 }
