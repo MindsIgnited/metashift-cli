@@ -100,7 +100,7 @@ dependencies {
         apacheSSHDVersion = '0.11.0'
         apacheMinaVersion = '2.0.7'
         awsResourcesVersion = '0.0.3'
-        awsSDKVersion = '1.11.7'
+        awsSDKVersion = '1.11.118'
         rythmVersion = '1.0.1'
         freeMarkerVersion = '2.3.22'
         grgitVersion = '1.4.1'
@@ -184,6 +184,18 @@ dependencies {
         exclude group: "com.fasterxml.jackson.core"
     }
     compile("com.amazonaws:aws-java-sdk-rds:${awsSDKVersion}"){
+        exclude group: "com.fasterxml.jackson.core"
+    }
+    compile("com.amazonaws:aws-java-sdk-lambda:${awsSDKVersion}"){
+        exclude group: "com.fasterxml.jackson.core"
+    }
+    compile("com.amazonaws:aws-java-sdk-cloudwatch:${awsSDKVersion}"){
+        exclude group: "com.fasterxml.jackson.core"
+    }
+    compile("com.amazonaws:aws-java-sdk-events:${awsSDKVersion}"){
+        exclude group: "com.fasterxml.jackson.core"
+    }
+    compile("com.amazonaws:aws-lambda-java-core:1.1.0"){
         exclude group: "com.fasterxml.jackson.core"
     }
 
