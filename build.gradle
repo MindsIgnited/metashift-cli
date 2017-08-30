@@ -100,7 +100,7 @@ dependencies {
         apacheSSHDVersion = '0.11.0'
         apacheMinaVersion = '2.0.7'
         awsResourcesVersion = '0.0.3'
-        awsSDKVersion = '1.11.118'
+        awsSDKVersion = '1.11.176'
         rythmVersion = '1.0.1'
         freeMarkerVersion = '2.3.22'
         grgitVersion = '1.4.1'
@@ -255,7 +255,7 @@ task wrapper(type: Wrapper) {
 
 
 applicationDefaultJvmArgs = [
-        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5015",
+        "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005",
         "-Dspring.profiles.active=development,crash",
         "-Dgroovy.grape.report.downloads=true",
         "-noverify"
